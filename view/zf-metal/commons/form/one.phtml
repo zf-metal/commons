@@ -1,0 +1,15 @@
+<?php
+$form = $this->form;
+$form->prepare();
+?>
+
+<?php echo $this->form()->openTag($form); ?>
+
+<?php foreach ($form as $element) : ?>
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <?php echo $this->renderFormElement($element,$this->style); ?>
+        </div>
+<?php endforeach; ?>
+
+<?php echo $this->form()->closeTag($form); ?>
+
