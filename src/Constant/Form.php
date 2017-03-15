@@ -26,7 +26,7 @@ class Form {
         self::FOUR_COLUMNS => self::FOUR_COLUMNS,
         ];
     
-    const TYPE = [
+    const STYLE = [
         self::VERTICAL => self::VERTICAL,
         self::HORIZONTAL => self::HORIZONTAL,
         self::INLINE => self::INLINE,

@@ -1,6 +1,6 @@
 <?php
 
-namespace ZfMetal\Security\Factory\Helper\View;
+namespace ZfMetal\Commons\Factory\Helper\View;
 
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;

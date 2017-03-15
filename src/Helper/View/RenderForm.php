@@ -6,9 +6,8 @@ use Zend\View\Helper\AbstractHelper;
 
 class RenderForm extends AbstractHelper {
 
-    
-     const partial_prefix = "zf-metal/commons/form/";
-    
+    const partial_prefix = "zf-metal/commons/form/";
+
     /**
      *
      * @var \ZfMetal\Commons\Options\ModuleOptions
@@ -22,7 +21,7 @@ class RenderForm extends AbstractHelper {
         $this->moduleOptions = $moduleOptions;
     }
 
-    public function __invoke($form, $style = null, $columns = null) {
+    public function __invoke($form, $style = null, $columns = null, array $classes = []) {
 
         if ($style) {
             $this->setStyle($style);
@@ -32,13 +31,26 @@ class RenderForm extends AbstractHelper {
             $this->setColumns($columns);
         }
 
-        return $this->view->partial($this->getPartial(), array("form" => $form,"style" => $this->getStyle()) );
+        $this->applyClasses($form, $classes);
+
+        return $this->view->partial($this->getPartial(), array("form" => $form, "style" => $this->getStyle()));
     }
-    
-    protected function getPartial(){
-        if(!$this->partial){
-            $this->buildPartial();
+
+    protected function applyClasses($form, $classes) {
+        if (is_array($classes)) {
+            foreach ($form->getElements() as $element) {
+                foreach ($classes as $class) {
+                    $element->setAttribute('class', $class);
+                }
+            }
         }
+    }
+
+    protected function getPartial() {
+        if (!$this->partial) {
+            $this->partial = $this->buildPartial();
+        }
+
         return $this->partial;
     }
 
@@ -59,18 +71,16 @@ class RenderForm extends AbstractHelper {
         }
         $this->style = $style;
     }
-    
-      protected function setColumns($columns) {
+
+    protected function setColumns($columns) {
         if (!array_key_exists($columns, \ZfMetal\Commons\Constant\Form::COLUMNS)) {
-            throw new Exception("columns " . $columns . " not exist.");
+            throw new \Exception("columns " . $columns . " not exist.");
         }
         $this->columns = $columns;
     }
-    
+
     function getColumns() {
         return $this->columns;
     }
-
-
 
 }

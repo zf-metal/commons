@@ -1,14 +1,12 @@
 <div  class="form-group<?php if ($this->formElementErrors($this->element)) echo " has-error" ?>">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <label>
 
-
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <label class="control-label"><?php echo ucfirst($this->translate($this->element->getLabel())); ?></label>
-    </div>
-
-    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-        <label class="btn btn-default fa fa-upload">
             <?php echo $this->formElement($this->element); ?>
+            <?php echo ucfirst($this->translate($this->element->getLabel())); ?>
+
         </label>
+
 
         <?php if ($element->getOption('description')): ?>
             <p class="help-block"><?php echo $this->element->getOption('description') ?></p>

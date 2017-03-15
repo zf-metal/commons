@@ -2,6 +2,8 @@
 
 namespace ZfMetal\Commons;
 
+use Zend\ServiceManager\Factory\InvokableFactory;
+
 return [
     'view_manager' => [
         'template_path_stack' => [
@@ -12,10 +14,14 @@ return [
         'factories' => [
             \ZfMetal\Commons\Helper\View\RenderForm::class => \ZfMetal\Commons\Factory\Helper\View\RenderFormFactory::class,
             \ZfMetal\Commons\Helper\View\RenderFormElement::class => \ZfMetal\Commons\Factory\Helper\View\RenderFormElementFactory::class,
+            \ZfMetal\Commons\Helper\View\Flash::class => InvokableFactory::class,
+            \ZfMetal\Commons\Helper\View\FlashCurrent::class => InvokableFactory::class,
         ],
         'aliases' => [
             'renderForm' => \ZfMetal\Commons\Helper\View\RenderForm::class,
             'renderFormElement' => \ZfMetal\Commons\Helper\View\RenderFormElement::class,
+            'flash' => \ZfMetal\Commons\Helper\View\Flash::class,
+            'flashCurrent' => \ZfMetal\Commons\Helper\View\FlashCurrent::class,
         ]
     ],
 ];

@@ -26,6 +26,8 @@ class RenderFormElement extends AbstractHelper {
             $this->setStyle($style);
         }
 
+
+
         switch ($element->getAttribute('type')) {
             case 'hidden':
                 $this->partial = $this->buildPartial('hidden');
@@ -35,13 +37,17 @@ class RenderFormElement extends AbstractHelper {
                 $this->partial = $this->buildPartial('file');
 
                 break;
+            case 'checkbox':
+                $this->partial = $this->buildPartial('checkbox');
 
+                break;
             case 'submit':
                 $this->partial = $this->buildPartial('submit');
 
                 break;
             default:
                 $this->partial = $this->buildPartial('default');
+                $element->setAttribute('class','form-control');
                 break;
         }
 
@@ -49,7 +55,7 @@ class RenderFormElement extends AbstractHelper {
     }
 
     protected function buildPartial($type) {
-        return self::partial_prefix . $this->getStyle() . $type;
+        return self::partial_prefix . $this->getStyle() . "/" . $type;
     }
 
     protected function getStyle() {
