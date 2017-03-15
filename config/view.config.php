@@ -16,6 +16,7 @@ return [
             \ZfMetal\Commons\Helper\View\RenderFormElement::class => \ZfMetal\Commons\Factory\Helper\View\RenderFormElementFactory::class,
             \ZfMetal\Commons\Helper\View\Flash::class => InvokableFactory::class,
             \ZfMetal\Commons\Helper\View\FlashCurrent::class => InvokableFactory::class,
+             \ZfMetal\Commons\Helper\View\JQSelectPopulate::class => InvokableFactory::class,
         ],
         'aliases' => [
             'renderForm' => \ZfMetal\Commons\Helper\View\RenderForm::class,
