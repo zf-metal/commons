@@ -1,13 +1,13 @@
 <?php
 
-namespace ZfMetal\Commons\Constant;
+namespace ZfMetal\Commons;
 
 /**
  * Description of Form
  *
  * @author Cristian Incarnato <cristian.cdi@gmail.com>
  */
-class Form {
+class Consts {
 
     const ONE_COLUMNS = "one";
     const TWO_COLUMNS = "two";
