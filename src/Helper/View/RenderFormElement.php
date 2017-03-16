@@ -37,7 +37,9 @@ class RenderFormElement extends AbstractHelper {
                 $this->partial = $this->buildPartial('file');
 
                 break;
+            case 'radio':
             case 'checkbox':
+            case 'DoctrineModule\Form\Element\ObjectMultiCheckbox':
                 $this->partial = $this->buildPartial('checkbox');
 
                 break;
@@ -47,7 +49,7 @@ class RenderFormElement extends AbstractHelper {
                 break;
             default:
                 $this->partial = $this->buildPartial('default');
-                $element->setAttribute('class','form-control');
+                $element->setAttribute('class', 'form-control');
                 break;
         }
 
@@ -66,10 +68,18 @@ class RenderFormElement extends AbstractHelper {
     }
 
     protected function setStyle($style) {
-        if (!array_key_exists($style, \ZfMetal\Commons\Constant\Form::STYLE)) {
+        if (!array_key_exists($style, \ZfMetal\Commons\Consts::STYLE)) {
             throw new Exception("style " . $style . " not exist.");
         }
         $this->style = $style;
+    }
+
+    function getModuleOptions() {
+        return $this->moduleOptions;
+    }
+
+    function setModuleOptions(\ZfMetal\Commons\Options\ModuleOptions $moduleOptions) {
+        $this->moduleOptions = $moduleOptions;
     }
 
 }

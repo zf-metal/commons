@@ -60,27 +60,40 @@ class RenderForm extends AbstractHelper {
 
     protected function getStyle() {
         if (!$this->style) {
-            $this->style = $this->moduleOptions->getFormStyle();
+            $this->style = $this->getModuleOptions()->getFormStyle();
         }
         return $this->style;
     }
 
     protected function setStyle($style) {
-        if (!array_key_exists($style, \ZfMetal\Commons\Constant\Form::STYLE)) {
+        if (!array_key_exists($style, \ZfMetal\Commons\Consts::STYLE)) {
             throw new Exception("style " . $style . " not exist.");
         }
         $this->style = $style;
     }
 
     protected function setColumns($columns) {
-        if (!array_key_exists($columns, \ZfMetal\Commons\Constant\Form::COLUMNS)) {
+        if (!array_key_exists($columns, \ZfMetal\Commons\Consts::COLUMNS)) {
             throw new \Exception("columns " . $columns . " not exist.");
         }
         $this->columns = $columns;
     }
 
     function getColumns() {
+         if (!$this->columns) {
+            $this->columns = $this->getModuleOptions()->getFormColumns();
+        }
         return $this->columns;
     }
+    
+    function getModuleOptions() {
+        return $this->moduleOptions;
+    }
+
+    function setModuleOptions(\ZfMetal\Commons\Options\ModuleOptions $moduleOptions) {
+        $this->moduleOptions = $moduleOptions;
+    }
+
+
 
 }

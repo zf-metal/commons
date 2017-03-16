@@ -23,6 +23,7 @@ return [
             'renderFormElement' => \ZfMetal\Commons\Helper\View\RenderFormElement::class,
             'flash' => \ZfMetal\Commons\Helper\View\Flash::class,
             'flashCurrent' => \ZfMetal\Commons\Helper\View\FlashCurrent::class,
+            'JQSelectPopulate' => \ZfMetal\Commons\Helper\View\JQSelectPopulate::class,
         ]
     ],
 ];
