@@ -38,6 +38,9 @@ class RenderFormElement extends AbstractHelper {
 
                 break;
             case 'radio':
+                $this->partial = $this->buildPartial('radio');
+                
+                break;
             case 'checkbox':
             case 'DoctrineModule\Form\Element\ObjectMultiCheckbox':
                 $this->partial = $this->buildPartial('checkbox');
