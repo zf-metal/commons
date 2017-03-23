@@ -1,0 +1,14 @@
+<li<?php if ($this->page->isActive()) echo ' class="active"' ?>>
+    <a 
+        class="nav-header" 
+        href="<?php echo $this->page->getHref() ?>"
+        <?php if ($this->page->getTarget() != ""): ?>
+            target="<?php echo $this->page->getTarget(); ?>"
+        <?php endif; ?>
+        >
+            <?php if ($this->page->get("icon") !== ""): ?>
+            <i class="<?php echo $this->page->get("icon"); ?>"></i>
+        <?php endif; ?>
+        <?php echo $this->page->getLabel() ?>
+    </a>
+</li>
