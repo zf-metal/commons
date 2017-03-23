@@ -66,9 +66,6 @@ class RenderMenu extends AbstractHelper {
     }
 
     protected function getStyle() {
-        if (!$this->style) {
-            $this->style = $this->getModuleOptions()->getFormStyle();
-        }
         return $this->style;
     }
 
