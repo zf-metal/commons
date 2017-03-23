@@ -18,9 +18,7 @@ class RenderMenu extends AbstractHelper {
     protected $menu = "default";
     protected $ulClass = "nav navbar-nav";
 
-    function __construct(\ZfMetal\Commons\Options\ModuleOptions $moduleOptions) {
-        $this->moduleOptions = $moduleOptions;
-    }
+  
 
     public function __invoke($style = null, $menu = null, $ulClass = null) {
 
@@ -81,12 +79,5 @@ class RenderMenu extends AbstractHelper {
         $this->style = $style;
     }
 
-    function getModuleOptions() {
-        return $this->moduleOptions;
-    }
-
-    function setModuleOptions(\ZfMetal\Commons\Options\ModuleOptions $moduleOptions) {
-        $this->moduleOptions = $moduleOptions;
-    }
 
 }
