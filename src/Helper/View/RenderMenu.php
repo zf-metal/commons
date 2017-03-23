@@ -10,14 +10,14 @@ class RenderMenu extends AbstractHelper {
     const STYLE_HORIZONTAL = "horizontal";
     const STYLE_VERTICAL = "vertical";
     const STYLES = [
-        STYLE_HORIZONTAL => STYLE_HORIZONTAL,
-        STYLE_VERTICAL => STYLE_VERTICAL
+        self::STYLE_HORIZONTAL => self::STYLE_HORIZONTAL,
+        self::STYLE_VERTICAL => self::STYLE_VERTICAL
     ];
 
     protected $style = self::STYLE_HORIZONTAL;
     protected $menu = "default";
     protected $ulClass = "nav navbar-nav";
-
+    protected $partial = null;
   
 
     public function __invoke($style = null, $menu = null, $ulClass = null) {
