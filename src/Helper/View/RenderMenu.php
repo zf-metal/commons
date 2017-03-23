@@ -22,7 +22,7 @@ class RenderMenu extends AbstractHelper {
         $this->moduleOptions = $moduleOptions;
     }
 
-    public function __invoke($style = self::STYLE_HORIZONTAL, $menu = "default", $ulClass = 'nav navbar-nav') {
+    public function __invoke($style = null, $menu = null, $ulClass = null) {
 
         if ($style) {
             $this->setStyle($style);
