@@ -7,14 +7,8 @@ use Zend\View\Helper\AbstractHelper;
 class RenderMenu extends AbstractHelper {
 
     const partial_prefix = "zf-metal/commons/menu/";
-    const STYLE_HORIZONTAL = "horizontal";
-    const STYLE_VERTICAL = "vertical";
-    const STYLES = [
-        self::STYLE_HORIZONTAL => self::STYLE_HORIZONTAL,
-        self::STYLE_VERTICAL => self::STYLE_VERTICAL
-    ];
 
-    protected $style = self::STYLE_HORIZONTAL;
+    protected $style = \ZfMetal\Commons\Consts::STYLE_MENU_HORIZONTAL;
     protected $menu = "default";
     protected $ulClass = "nav navbar-nav";
     protected $partial = null;
@@ -70,7 +64,7 @@ class RenderMenu extends AbstractHelper {
     }
 
     protected function setStyle($style) {
-        if (!array_key_exists($style, SELF::STYLES)) {
+        if (!array_key_exists($style, \ZfMetal\Commons\Consts::STYLES_MENU)) {
             throw new Exception("style " . $style . " not exist.");
         }
         $this->style = $style;
