@@ -14,7 +14,7 @@ class RenderMenu extends AbstractHelper {
         STYLE_VERTICAL => STYLE_VERTICAL
     ];
 
-    protected $style;
+    protected $style = self::STYLE_HORIZONTAL;
     protected $menu = "default";
     protected $ulClass = "nav navbar-nav";
 
