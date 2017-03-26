@@ -1,13 +1,7 @@
-<?php
-/* @var $container Zend\Navigation\Navigation */
-$container = $this->container;
-?>
 <ul class="<?php echo $this->navigation()->menu()->getUlClass(); ?>">
-    <?php foreach ($container as $page): ?>
+    <?php foreach ($this->container as $page): ?>
         <?php if (!$this->navigation()->accept($page)) continue; ?>
-        <?php /* @var $page Zend\Navigation\Page\Mvc */ ?>
-        <?php $hasChildren = $page->hasPages() ?>
-        <?php if (!$hasChildren): ?>
+        <?php if (!$page->hasPages()): ?>
             <?php echo $this->partial("zf-metal/commons/menu/horizontal/partial/li", array("page" => $page)); ?>
         <?php else: ?>
             <?php
@@ -19,7 +13,6 @@ $container = $this->container;
                 }
             } 
             ?>
-    
             <?php if ($access) :?>
                     <?php echo $this->partial("zf-metal/commons/menu/horizontal/partial/dropdown", array("page" => $page)); ?>
             <?php endif; ?>

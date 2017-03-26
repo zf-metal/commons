@@ -18,6 +18,7 @@ return [
             \ZfMetal\Commons\Helper\View\FlashCurrent::class => InvokableFactory::class,
             \ZfMetal\Commons\Helper\View\JQSelectPopulate::class => InvokableFactory::class,
             \ZfMetal\Commons\Helper\View\RenderMenu::class => InvokableFactory::class,
+            \ZfMetal\Commons\Helper\View\TabDepth::class => InvokableFactory::class,
         ],
         'aliases' => [
             'renderForm' => \ZfMetal\Commons\Helper\View\RenderForm::class,
@@ -25,7 +26,8 @@ return [
             'flash' => \ZfMetal\Commons\Helper\View\Flash::class,
             'flashCurrent' => \ZfMetal\Commons\Helper\View\FlashCurrent::class,
             'JQSelectPopulate' => \ZfMetal\Commons\Helper\View\JQSelectPopulate::class,
-            'renderMenu' => \ZfMetal\Commons\Helper\View\RenderMenu::class
+            'renderMenu' => \ZfMetal\Commons\Helper\View\RenderMenu::class,
+            'tabDepth' => \ZfMetal\Commons\Helper\View\TabDepth::class,
         ]
     ],
 ];
