@@ -1,12 +1,10 @@
 <div  class="form-group<?php if ($this->formElementErrors($this->element)) echo " has-error" ?>">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <label>
-
-            <?php echo $this->formElement($this->element); ?>
-            <?php echo ucfirst($this->translate($this->element->getLabel())); ?>
-
-        </label>
-
+            <?php
+        $this->element->setLabelAttributes(['class' => 'checkbox-inline']);
+        ?>
+        <?php echo $this->formElement($this->element); ?>
+        <?php echo ucfirst($this->translate($this->element->getLabel())); ?>
 
         <?php if ($element->getOption('description')): ?>
             <p class="help-block"><?php echo $this->element->getOption('description') ?></p>

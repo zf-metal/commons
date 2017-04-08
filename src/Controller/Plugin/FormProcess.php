@@ -26,26 +26,61 @@ class FormProcess extends AbstractPlugin {
      */
     protected $object;
 
+    /**
+     * Define if push msj in flashmessenger
+     */
+    protected $flash = true;
+
+    /**
+     * Status form validation
+     * 
+     * @var boolean
+     */
+    protected $status = null;
+
+    /**
+     * Errors in form validation
+     * 
+     * @var array
+     */
+    protected $errors;
+
     function getEm() {
         return $this->em;
-    }
-
-    function setEm(\Doctrine\ORM\EntityManager $em) {
-        $this->em = $em;
     }
 
     function getForm() {
         return $this->form;
     }
 
-    function setForm(\Zend\Form\Form $form) {
-        $this->form = $form;
+    function getRequest() {
+        return $this->request;
     }
 
-  
-    public function __invoke(\Doctrine\ORM\EntityManager $em, \Zend\Form\Form $form) {
+    function getObject() {
+        return $this->object;
+    }
+
+    function getFlash() {
+        return $this->flash;
+    }
+
+    function getErrors() {
+        return $this->errors;
+    }
+
+    function setObject($object) {
+        $this->object = $object;
+    }
+
+    function getStatus() {
+        return $this->status;
+    }
+
+    public function __invoke(\Doctrine\ORM\EntityManager $em, \Zend\Form\Form $form, $flash = true) {
         $this->em = $em;
         $this->form = $form;
+        $this->flash = $flash;
 
         if ($this->getController()->getRequest()->isPost()) {
             $this->form->setData($this->getController()->getRequest()->getPost());
@@ -53,20 +88,37 @@ class FormProcess extends AbstractPlugin {
             if ($this->form->isValid()) {
                 $this->getEm()->persist($this->form->getObject());
                 $this->getEm()->flush();
-                $this->getController()->flashMessenger()->addSuccessMessage('Form ok');
-                return true;
+                $this->status = true;
+                if ($this->flash) {
+                    $this->getController()->flashMessenger()->addSuccessMessage('Form ok');
+                }
+                
             } else {
+                $this->status = false;
                 $this->erroToFlash();
-                return false;
             }
+
         }
+        return $this;
+    }
+
+    public function getResult() {
+        $json["status"] = $this->status;
+        $json["errors"] = $this->errors;
+        return $json;
     }
 
     protected function erroToFlash() {
-        $this->getController()->flashMessenger()->addErrorMessage('Form Invalid');
+        if ($this->flash) {
+            $this->getController()->flashMessenger()->addErrorMessage('Form Invalid');
+        }
         foreach ($this->form->getMessages() as $key => $messages) {
             foreach ($messages as $msj) {
-                $this->getController()->flashMessenger()->addErrorMessage("Field: " . $key . " - Error: " . $msj);
+                $s = "<strong>Field: </strong>" . $key . " <strong>Error:</strong> " . $msj;
+                $this->errors[] = $s;
+                if ($this->flash) {
+                    $this->getController()->flashMessenger()->addErrorMessage($s);
+                }
             }
         }
     }
