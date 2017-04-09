@@ -92,12 +92,10 @@ class FormProcess extends AbstractPlugin {
                 if ($this->flash) {
                     $this->getController()->flashMessenger()->addSuccessMessage('Form ok');
                 }
-                
             } else {
                 $this->status = false;
                 $this->erroToFlash();
             }
-
         }
         return $this;
     }
@@ -105,6 +103,9 @@ class FormProcess extends AbstractPlugin {
     public function getResult() {
         $json["status"] = $this->status;
         $json["errors"] = $this->errors;
+        if (method_exists($this->form->getObject(), 'getId')) {
+            $json["id"] = $this->form->getObject()->getId();
+        }
         return $json;
     }
 
