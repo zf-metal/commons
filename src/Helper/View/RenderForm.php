@@ -27,7 +27,7 @@ class RenderForm extends AbstractHelper {
         $this->moduleOptions = $moduleOptions;
     }
 
-    public function __invoke($form, $style = null, $columns = null, array $groups = null, array $columnGroups = null) {
+    public function __invoke($form, $style = null, $columns = null, array $horizontalGroups = null, array $verticalGroups = null) {
         $this->form = $form;
 
         if ($style) {
@@ -45,8 +45,8 @@ class RenderForm extends AbstractHelper {
                     "form" => $this->form,
                     "style" => $this->getStyle(),
                     'columnClass' => self::column_class[$this->getColumns()],
-                    'groups' => $groups,
-                    'columnGroups' => $columnGroups
+                    'horizontalGroups' => $horizontalGroups,
+                    'verticalGroups' => $verticalGroups
         ));
     }
 
