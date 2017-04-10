@@ -21,12 +21,14 @@ class RenderForm extends AbstractHelper {
     private $moduleOptions;
     private $style;
     private $columns;
+    private $form;
 
     function __construct(\ZfMetal\Commons\Options\ModuleOptions $moduleOptions) {
         $this->moduleOptions = $moduleOptions;
     }
 
-    public function __invoke($form, $style = null, $columns = null, array $groups = null) {
+    public function __invoke($form, $style = null, $columns = null, array $groups = null, array $columnGroups = null) {
+        $this->form = $form;
 
         if ($style) {
             $this->setStyle($style);
@@ -36,12 +38,15 @@ class RenderForm extends AbstractHelper {
             $this->setColumns($columns);
         }
 
+        $this->classStyle();
+
         return $this->view->partial(
                         self::partial, array(
-                    "form" => $form,
+                    "form" => $this->form,
                     "style" => $this->getStyle(),
                     'columnClass' => self::column_class[$this->getColumns()],
-                    'groups' => $groups
+                    'groups' => $groups,
+                    'columnGroups' => $columnGroups
         ));
     }
 
@@ -53,10 +58,24 @@ class RenderForm extends AbstractHelper {
     }
 
     protected function setStyle($style) {
-        if (!array_key_exists($style, \ZfMetal\Commons\Consts::STYLE)) {
-            throw new Exception("style " . $style . " not exist.");
-        }
+        $this->classStyle($style);
         $this->style = $style;
+    }
+
+    protected function classStyle() {
+        switch ($this->style) {
+            case \ZfMetal\Commons\Consts::STYLE_VERTICAL:
+                $this->form->setAttribute("class", "form-vertical");
+                break;
+            case \ZfMetal\Commons\Consts::STYLE_HORIZONTAL:
+                $this->form->setAttribute("class", "form-horizontal");
+                break;
+            case \ZfMetal\Commons\Consts::STYLE_INLINE:
+                $this->form->setAttribute("class", "form-inline");
+                break;
+            default:
+                break;
+        }
     }
 
     protected function setColumns($columns) {

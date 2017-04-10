@@ -71,9 +71,6 @@ class RenderFormElement extends AbstractHelper {
     }
 
     protected function setStyle($style) {
-        if (!array_key_exists($style, \ZfMetal\Commons\Consts::STYLE)) {
-            throw new Exception("style " . $style . " not exist.");
-        }
         $this->style = $style;
     }
 

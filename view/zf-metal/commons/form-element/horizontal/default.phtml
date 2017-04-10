@@ -1,7 +1,6 @@
 <div  class="form-group<?php if ($this->formElementErrors($this->element)) echo " has-error" ?>">
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <label class="col-lg-5 control-label pull-right"><?php echo ucfirst($this->translate($this->element->getLabel())); ?></label>
-    </div>
+
+        <label class="col-lg-4 col-md-4 col-sm-12 col-xs-12 control-label"><?php echo ucfirst($this->translate($this->element->getLabel())); ?></label>
 
     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
         <?php echo $this->formElement($this->element); ?>
