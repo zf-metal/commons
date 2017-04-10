@@ -65,9 +65,11 @@ class RenderForm extends AbstractHelper {
     protected function classStyle() {
         switch ($this->style) {
             case \ZfMetal\Commons\Consts::STYLE_VERTICAL:
+            case \ZfMetal\Commons\Consts::STYLE_VERTICAL_LG:
                 $this->form->setAttribute("class", "form-vertical");
                 break;
             case \ZfMetal\Commons\Consts::STYLE_HORIZONTAL:
+            case \ZfMetal\Commons\Consts::STYLE_HORIZONTAL - lg:
                 $this->form->setAttribute("class", "form-horizontal");
                 break;
             case \ZfMetal\Commons\Consts::STYLE_INLINE:

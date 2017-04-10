@@ -1,12 +1,16 @@
 <?php
-if (!$this->element->getAttribute('placeholder') && $this->element->getLabel()) {
-    $element->setAttribute('placeholder', $this->element->getLabel());
-}
+$class = $this->element->getAttribute("class");
+$this->element->setAttribute("class", $class . "form-control input-lg");
 ?>
-
 <div  class="form-group<?php if ($this->formElementErrors($this->element)) echo " has-error" ?>">
 
+    <?php
+    $this->element->setLabelAttributes(['class' => 'radio-inline']);
+    ?>
     <?php echo $this->formElement($this->element); ?>
+    <?php echo ucfirst($this->translate($this->element->getLabel())); ?>
+
+
 
     <?php if ($element->getOption('description')): ?>
         <p class="help-block"><?php echo $this->element->getOption('description') ?></p>

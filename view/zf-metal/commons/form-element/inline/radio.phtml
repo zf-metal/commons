@@ -1,6 +1,6 @@
 <div  class="form-group<?php if ($this->formElementErrors($this->element)) echo " has-error" ?>">
-
-        <?php
+    <div class="radio col-lg-12 col-md-12 col-sm-12 col-xs-12">
+       <?php
         $this->element->setLabelAttributes(['class' => 'radio-inline']);
         ?>
         <?php echo $this->formElement($this->element); ?>
@@ -22,4 +22,5 @@
 
         <?php endif; ?>
 
+    </div>
 </div>
