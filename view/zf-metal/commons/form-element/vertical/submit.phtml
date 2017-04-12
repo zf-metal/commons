@@ -1,1 +1,7 @@
+<?php
+$class = $this->element->getAttribute("class");
+if (!preg_match("/btn\s/", $class)) {
+    $this->element->setAttribute("class","btn ".$class);
+}
+?>
 <?php echo $this->formInput($this->element); ?>

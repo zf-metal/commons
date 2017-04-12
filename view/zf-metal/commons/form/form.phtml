@@ -10,7 +10,7 @@ $elementsReady = array();
 <?php if (count($this->horizontalGroups)): ?>
     <?php foreach ($this->horizontalGroups as $groupName => $group): ?>
         <div id="form-group-<?php echo $groupName; ?>">
-            <legend><?php echo $groupName; ?></legend>
+            <legend><?php echo $this->translate($groupName); ?></legend>
             <?php foreach ($group as $item): ?>
                 <?php if ($form->has($item) && !in_array($item, $elementsReady)): ?>
                     <?php $element = $form->get($item); ?>
@@ -32,7 +32,7 @@ $elementsReady = array();
         <div class="<?php echo $this->columnClass; ?>">
 
             <div id="form-group-<?php echo $groupName; ?>">
-                <legend><?php echo $groupName; ?></legend>
+                <legend><?php echo $this->translate($groupName); ?></legend>
                 <?php foreach ($group as $item): ?>
                     <?php if ($form->has($item) && !in_array($item, $elementsReady)): ?>
                         <?php $element = $form->get($item); ?>

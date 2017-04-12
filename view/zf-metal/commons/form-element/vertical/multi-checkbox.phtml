@@ -1,16 +1,19 @@
 <?php
+//REMOVE CLASS "form-control" if  setted
 $class = $this->element->getAttribute("class");
-if (!preg_match("/form-control/", $class)) {
-    $this->element->setAttribute("class", $class . " form-control");
+if (preg_match("/form-control/", $class)) {
+    $this->element->setAttribute("class",str_replace("form-control","", $class));
 }
+//ADD LABEL CLASS "checkbox-inline"
+ $this->element->setLabelAttributes(['class' => 'checkbox-inline']);
 ?>
+
 <div  class="form-group<?php if ($this->formElementErrors($this->element)) echo " has-error" ?>">
 
-    <label class="control-label"><?php echo ucfirst($this->translate($this->element->getLabel())); ?></label>
+    <?php echo $this->formElement($this->element); ?>
+    <?php echo ucfirst($this->translate($this->element->getLabel())); ?>
 
-    <label class="btn btn-default glyphicon glyphicon-open">
-        <?php echo $this->formElement($this->element); ?>
-    </label>
+
 
     <?php if ($element->getOption('description')): ?>
         <p class="help-block"><?php echo $this->element->getOption('description') ?></p>

@@ -27,7 +27,6 @@ class RenderFormElement extends AbstractHelper {
         }
 
 
-
         switch ($element->getAttribute('type')) {
             case 'hidden':
                 $this->partial = $this->buildPartial('hidden');
@@ -39,12 +38,14 @@ class RenderFormElement extends AbstractHelper {
                 break;
             case 'radio':
                 $this->partial = $this->buildPartial('radio');
-                
+
                 break;
             case 'checkbox':
-            case 'DoctrineModule\Form\Element\ObjectMultiCheckbox':
                 $this->partial = $this->buildPartial('checkbox');
 
+                break;
+            case 'multi_checkbox':
+                $this->partial = $this->buildPartial('multi-checkbox');
                 break;
             case 'submit':
             case 'button':
@@ -52,7 +53,6 @@ class RenderFormElement extends AbstractHelper {
                 break;
             default:
                 $this->partial = $this->buildPartial('default');
-                $element->setAttribute('class', 'form-control');
                 break;
         }
 
