@@ -39,5 +39,11 @@ class Consts {
         self::STYLE_MENU_HORIZONTAL => self::STYLE_MENU_HORIZONTAL,
         self::STYLE_MENU_VERTICAL => self::STYLE_MENU_VERTICAL
     ];
+    Const CONDITIONAL_ASC = 'asc';
+    Const CONDITIONAL_DESC = 'desc';
+    const CONDITIONALS = [
+        self::CONDITIONAL_ASC => self::CONDITIONAL_ASC,
+        self::CONDITIONAL_DESC => self::CONDITIONAL_DESC
+    ];
 
 }
