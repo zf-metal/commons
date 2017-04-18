@@ -28,6 +28,11 @@ return [
             'JQSelectPopulate' => \ZfMetal\Commons\Helper\View\JQSelectPopulate::class,
             'renderMenu' => \ZfMetal\Commons\Helper\View\RenderMenu::class,
             'bootstrapModal' => \ZfMetal\Commons\Helper\View\BootstrapModal::class,
+        ],
+        'invokables' => [
+            'simplifyNumber' => \ZfMetal\Commons\Helper\View\SimplifyNumber::class,
+            'conditionalClasses' => \ZfMetal\Commons\Helper\View\ConditionalClasses::class,
+            'statusAvgClass' => \ZfMetal\Commons\Helper\View\StatusAvgClass::class,
         ]
     ],
 ];
