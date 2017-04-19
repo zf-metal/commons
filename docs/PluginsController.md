@@ -1,4 +1,4 @@
 # Plugins Controller
 
 
-[FormBuilder](/PluginsController/FormBuilder.md)
+[FormBuilder](PluginsController/FormBuilder.md)
