@@ -1,6 +1,4 @@
-# Form Builder
-
-### Descripcion:
+# FormBuilder [PluginsControllers](../PluginsController.md)
 
 This Plugin allows us to generate a form from a Doctrine entity.
 
