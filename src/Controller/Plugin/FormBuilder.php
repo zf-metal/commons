@@ -19,6 +19,14 @@ class FormBuilder extends AbstractPlugin {
         $this->em = $em;
     }
 
+    /**
+     * Generate a Form from Entity
+     * 
+     * @param \Doctrine\ORM\EntityManager $em
+     * @param string $entityName
+     * @param boolean $addSubmit
+     * @return \Zend\Form\Form
+     */
     public function __invoke(\Doctrine\ORM\EntityManager $em, $entityName, $addSubmit = true) {
         $this->em = $em;
         $builder = new \DoctrineORMModule\Form\Annotation\AnnotationBuilder($this->getEm());

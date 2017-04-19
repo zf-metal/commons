@@ -2,12 +2,12 @@
 
 ### Descripcion:
 
-Este Plugin permite generar un Form a partir de una entidad de Doctrine.
+This Plugin allows us to generate a form from a Doctrine entity.
 
 ### Parameters:
-* @param \Doctrine\ORM\EntityManager $em  EntityManager de Doctrine
-* @param string $entityName Nombre de la entidad para la cual se genera el Form
-* @param boolean $addSubmit (Opcional)Define si se agrega un submit button al form
+* @param \Doctrine\ORM\EntityManager $em  Doctrine EntityManager
+* @param string $entityName Name of Entity
+* @param boolean $addSubmit (Optional) Defines if a submit button is added to the form
 
 ### Return:
 * @return \Zend\Form\Form
@@ -16,9 +16,10 @@ Este Plugin permite generar un Form a partir de una entidad de Doctrine.
 * formBuilder
 
 ### Example:
-
+```
 $em = $this->getEm();
 $entityName = "Module\Entity\SomeEntity";
 $addSubmit = true;
 
 $form = $this->formBuilder($em,$entityName,$addSubmit);
+```
