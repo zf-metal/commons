@@ -19,18 +19,20 @@ class FormBuilder extends AbstractPlugin {
         $this->em = $em;
     }
 
-    public function __invoke(\Doctrine\ORM\EntityManager $em, $entity) {
+    public function __invoke(\Doctrine\ORM\EntityManager $em, $entityName, $addSubmit = true) {
         $this->em = $em;
         $builder = new \DoctrineORMModule\Form\Annotation\AnnotationBuilder($this->getEm());
-        $form = $builder->createForm($entity);
-        $form->add([
-            'name' => 'submitbtn',
-            'type' => 'Zend\Form\Element\Submit',
-            'attributes' => [
-                'value' => "Submit",
-                'class' => 'btn btn-primary',
-            ]
-        ]);
+        $form = $builder->createForm($entityName);
+        if ($addSubmit) {
+            $form->add([
+                'name' => 'submitbtn',
+                'type' => 'Zend\Form\Element\Submit',
+                'attributes' => [
+                    'value' => "Submit",
+                    'class' => 'btn btn-primary',
+                ]
+            ]);
+        }
         $form->setHydrator(new \DoctrineModule\Stdlib\Hydrator\DoctrineObject($this->getEm()));
         return $form;
     }
