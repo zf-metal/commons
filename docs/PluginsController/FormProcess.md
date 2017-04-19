@@ -1,4 +1,4 @@
-..[PluginsControllers](../PluginsController.md)
+Back to ..[PluginsControllers](../PluginsController.md)
 # FormProcess
 
 This Plugin allows us process a form that bind a Doctrine entity. If form is valid, Entity will be persist, else you will get form errors 
@@ -14,7 +14,7 @@ This Plugin allows us process a form that bind a Doctrine entity. If form is val
 ### Invoke:
 * formProcess
 
-### Example:
+### Example 1:
 
 Process form and send form to view
 ```
@@ -30,7 +30,7 @@ $view = new ViewModel(array('form' => $form));
 return $view;
 ```
 
-##Alternative
+### Example 2 (Alternative):
 Process form, get result in array and return a json
 
 ```
