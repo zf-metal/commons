@@ -3,11 +3,11 @@
 Module that provide functions, plugins and helpers.
 
 
-## PluginsControllers
+### PluginsControllers
 
 [PluginsControllers](PluginsController.md)
 
 
-## ViewHelpers
+### ViewHelpers
 
 [ViewHelpers](ViewHelpers.md)
