@@ -51,18 +51,16 @@ Process form, get result in array and return a json
 
 ```
 $em = $this->getEm();
-$form = new \Module\Form\SomeEntityForm();
-form->bind($entity);
+$form = $this->formBuilder($em,$entityName);
 $flash = true;
 
 $aResult = $this->formProcess($em,$form,$flash)->getResult();
 
 /*
 $aResult looks like:
-
 [
-"status" => true|false
-"errors" => ["error1","error2"]
+    "status" => true|false
+    "errors" => ["error1","error2"]
 ]
 */
 
