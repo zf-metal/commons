@@ -1,0 +1,26 @@
+<?php
+if (!$this->element->getAttribute('placeholder') && $this->element->getLabel()) {
+    $element->setAttribute('placeholder', $this->element->getLabel());
+}
+?>
+
+<div  class="form-group<?php if ($this->formElementErrors($this->element)) echo " has-error" ?>">
+
+    <?php echo $this->formElement($this->element); ?>
+
+    <?php if ($element->getOption('description')): ?>
+        <p class="help-block"><?php echo $this->element->getOption('description') ?></p>
+    <?php endif; ?>
+
+    <?php if ($this->formElementErrors($this->element)) : ?>
+        <?php
+        echo $this->formElementErrors()
+                ->setMessageOpenFormat('<span class="help-block">')
+                ->setMessageSeparatorString('</span><span class="help-block">')
+                ->setMessageCloseString('</span>')
+                ->render($this->element);
+        ?>
+
+    <?php endif; ?>
+
+</div>
