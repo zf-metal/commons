@@ -32,6 +32,14 @@ class RenderFormElement extends AbstractHelper {
                 $this->partial = $this->buildPartial('hidden');
 
                 break;
+            case 'text':
+                $this->partial = $this->buildPartial('text');
+
+                break;
+            case 'textarea':
+                $this->partial = $this->buildPartial('textarea');
+
+                break;
             case 'file':
                 $this->partial = $this->buildPartial('file');
 
