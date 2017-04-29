@@ -1,17 +1,15 @@
 <?php
+//SET CLASS "form-control" if no setted
 $class = $this->element->getAttribute("class");
-$this->element->setAttribute("class", $class . "form-control input-lg");
+if (!preg_match("/form-control/", $class)) {
+    $this->element->setAttribute("class", $class . " form-control");
+}
 ?>
 <div  class="form-group<?php if ($this->formElementErrors($this->element)) echo " has-error" ?>">
 
+    <label class="control-label"><?php echo ucfirst($this->translate($this->element->getLabel())); ?></label>
 
-    <?php
-    $this->element->setLabelAttributes(['class' => 'checkbox-inline']);
-    ?>
     <?php echo $this->formElement($this->element); ?>
-    <?php echo ucfirst($this->translate($this->element->getLabel())); ?>
-
-
 
     <?php if ($element->getOption('description')): ?>
         <p class="help-block"><?php echo $this->element->getOption('description') ?></p>
