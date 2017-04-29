@@ -51,6 +51,9 @@ class RenderFormElement extends AbstractHelper {
             case 'button':
                 $this->partial = $this->buildPartial('submit');
                 break;
+            case 'select':
+                $this->partial = $this->buildPartial('select');
+                break;
             default:
                 $this->partial = $this->buildPartial('default');
                 break;
