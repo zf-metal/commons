@@ -1,0 +1,43 @@
+<li class="<?php if ($page->isActive(true)) echo ' active' ?>">
+    <a 
+        href="#"
+        class="dropdown-toggle"
+        <?php if ($this->page->getTarget() != ""): ?>
+            target="<?php echo $this->page->getTarget(); ?>"
+        <?php endif; ?>
+        >
+            <?php if ($this->page->get("icon") !== ""): ?>
+            <i class="<?php echo $this->page->get("icon"); ?>"></i>
+        <?php endif; ?>
+        <span><?php echo $this->page->getLabel() ?> </span>
+        <i class="fa fa-chevron-circle-right drop-icon"></i>
+    </a>
+    <ul class="submenu">
+        <?php foreach ($page->getPages() as $child): ?>
+            <?php if (!$this->navigation()->accept($child)) continue; ?>
+            <?php if ($child->get("separator") === true): ?>
+                <li role="separator" class="divider"></li>
+                    <?php
+                    continue;
+                endif;
+                ?>
+
+            <?php if (!$child->hasPages()): ?>
+                <?php echo $this->partial("zf-metal/commons/menu/vertical/partial/li", array("page" => $child)); ?>
+            <?php else: ?>
+                <?php
+                //check if access is allowed at least one item
+                $access = false;
+                foreach ($child->getPages() as $subChild) {
+                    if ($this->navigation()->accept($subChild) && $subChild->get("separator") !== true) {
+                        $access = true;
+                    }
+                }
+                ?>
+                <?php if ($access) : ?>
+                    <?php echo $this->partial("zf-metal/commons/menu/vertical/partial/dropdown", array("page" => $child)); ?>
+                <?php endif; ?>
+            <?php endif ?>
+        <?php endforeach ?>
+    </ul>
+</li>  
