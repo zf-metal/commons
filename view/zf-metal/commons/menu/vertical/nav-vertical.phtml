@@ -1,0 +1,21 @@
+<ul class="<?php echo $this->navigation()->menu()->getUlClass(); ?>">
+    <?php foreach ($this->container as $page): ?>
+        <?php if (!$this->navigation()->accept($page)) continue; ?>
+        <?php if (!$page->hasPages()): ?>
+            <?php echo $this->partial("zf-metal/commons/menu/vertical/partial/li", array("page" => $page)); ?>
+        <?php else: ?>
+            <?php
+            //check if access is allowed at least one item
+            $access = false;
+            foreach ($page->getPages() as $child) {
+                if ($this->navigation()->accept($child) && $child->get("separator") !== true) {
+                    $access = true;
+                }
+            } 
+            ?>
+            <?php if ($access) :?>
+                    <?php echo $this->partial("zf-metal/commons/menu/vertical/partial/dropdown", array("page" => $page)); ?>
+            <?php endif; ?>
+        <?php endif ?>
+    <?php endforeach ?>
+</ul>
