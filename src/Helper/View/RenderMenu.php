@@ -12,9 +12,9 @@ class RenderMenu extends AbstractHelper {
     protected $menu = "default";
     protected $ulClass = "nav navbar-nav";
     protected $partial = null;
-  
+    protected $minDepth = null;
 
-    public function __invoke($style = null, $menu = null, $ulClass = null) {
+    public function __invoke($style = null, $menu = null, $ulClass = null, $minDepth = null) {
 
         if ($style) {
             $this->setStyle($style);
@@ -27,11 +27,16 @@ class RenderMenu extends AbstractHelper {
         if ($ulClass) {
             $this->setUlClass($ulClass);
         }
+        
+         if ($minDepth) {
+            $this->setMinDepth($minDepth);
+        }
 
         return $this->view->partial($this->getPartial(), [
                     "menu" => $this->getMenu(),
                     "style" => $this->getStyle(),
-                    "ulClass" => $this->getUlClass()
+                    "ulClass" => $this->getUlClass(),
+                    'minDepth' => $this->getMinDepth()
         ]);
     }
 
@@ -59,6 +64,16 @@ class RenderMenu extends AbstractHelper {
         $this->ulClass = $ulClass;
     }
 
+    function getMinDepth() {
+        return $this->minDepth;
+    }
+
+    function setMinDepth($minDepth) {
+        $this->minDepth = $minDepth;
+        return $this;
+    }
+
+        
     protected function getStyle() {
         return $this->style;
     }
