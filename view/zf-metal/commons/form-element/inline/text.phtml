@@ -3,7 +3,14 @@
     <label class="col-lg-4 col-md-4 col-sm-12 col-xs-12 control-label"><?php echo ucfirst($this->translate($this->element->getLabel())); ?></label>
 
     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+           <?php if ($this->element->getOption("addon")): ?>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="<?= $this->element->getOption("addon") ?>"></i></span>
+            <?php echo $this->formInput($this->element); ?>
+        </div>    
+    <?php else: ?>
         <?php echo $this->formElement($this->element); ?>
+    <?php endif; ?>
 
         <?php if ($element->getOption('description')): ?>
             <p class="help-block"><?php echo $this->element->getOption('description') ?></p>

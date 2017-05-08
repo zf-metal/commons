@@ -6,7 +6,14 @@ if (!$this->element->getAttribute('placeholder') && $this->element->getLabel()) 
 
 <div  class="form-group<?php if ($this->formElementErrors($this->element)) echo " has-error" ?>">
 
-    <?php echo $this->formElement($this->element); ?>
+       <?php if ($this->element->getOption("addon")): ?>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="<?= $this->element->getOption("addon") ?>"></i></span>
+            <?php echo $this->formInput($this->element); ?>
+        </div>    
+    <?php else: ?>
+        <?php echo $this->formElement($this->element); ?>
+    <?php endif; ?>
 
     <?php if ($element->getOption('description')): ?>
         <p class="help-block"><?php echo $this->element->getOption('description') ?></p>

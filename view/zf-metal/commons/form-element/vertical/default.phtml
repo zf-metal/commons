@@ -9,7 +9,14 @@ if (!preg_match("/form-control/", $class)) {
 
     <label class="control-label"><?php echo ucfirst($this->translate($this->element->getLabel())); ?></label>
 
-    <?php echo $this->formElement($this->element); ?>
+        <?php if ($this->element->getOption("addon")): ?>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="<?= $this->element->getOption("addon") ?>"></i></span>
+            <?php echo $this->formInput($this->element); ?>
+        </div>    
+    <?php else: ?>
+        <?php echo $this->formElement($this->element); ?>
+    <?php endif; ?>
 
     <?php if ($element->getOption('description')): ?>
         <p class="help-block"><?php echo $this->element->getOption('description') ?></p>
