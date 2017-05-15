@@ -9,7 +9,7 @@ class FormBuilderFactory implements FactoryInterface {
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null) {
 
-        $zendFormFactory = $this->container->get('zf-metal-zend-form-factory');
+        $zendFormFactory = $container->get('zf-metal-zend-form-factory');
 
         $formBuilder = new \ZfMetal\Commons\Controller\Plugin\FormBuilder();
         $formBuilder->setZendFormFactory($zendFormFactory);
