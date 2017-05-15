@@ -8,7 +8,12 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 class FormBuilderFactory implements FactoryInterface {
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null) {
-        return new \ZfMetal\Commons\Controller\Plugin\FormBuilder();
+
+        $zendFormFactory = $this->container->get('zf-metal-zend-form-factory');
+
+        $formBuilder = new \ZfMetal\Commons\Controller\Plugin\FormBuilder();
+        $formBuilder->setZendFormFactory($zendFormFactory);
+        return $formBuilder;
     }
 
 }
