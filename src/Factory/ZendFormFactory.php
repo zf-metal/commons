@@ -4,7 +4,6 @@ namespace ZfMetal\Commons\Factory;
 
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
-use \DoctrineORMModule\Form\Annotation\AnnotationBuilder;
 
 class ZendFormFactory implements FactoryInterface {
 
