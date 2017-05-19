@@ -1,6 +1,6 @@
 <?php
 
-namespace ZfMetal\Commons\Factory\Controller\Plugin;
+namespace ZfMetal\Commons\Factory\Service;
 
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -9,9 +9,11 @@ class FormBuilderFactory implements FactoryInterface {
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null) {
 
-        $serviceFormBuilder = $container->get('zf-metal-form-builder');
+        $zendFormFactory = $container->get('zf-metal-zend-form-factory');
 
-        return new \ZfMetal\Commons\Controller\Plugin\FormBuilder($serviceFormBuilder);
+        $formBuilder = new \ZfMetal\Commons\Service\FormBuilder();
+        $formBuilder->setZendFormFactory($zendFormFactory);
+        return $formBuilder;
     }
 
 }

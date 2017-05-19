@@ -5,13 +5,13 @@ namespace ZfMetal\Commons\Factory\Controller\Plugin;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
-class FormBuilderFactory implements FactoryInterface {
+class FormProcessFactory implements FactoryInterface {
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null) {
 
-        $serviceFormBuilder = $container->get('zf-metal-form-builder');
+        $serviceFormProcess = $container->get('zf-metal-form-process');
 
-        return new \ZfMetal\Commons\Controller\Plugin\FormBuilder($serviceFormBuilder);
+        return new \ZfMetal\Commons\Controller\Plugin\FormProcess($serviceFormProcess);
     }
 
 }
