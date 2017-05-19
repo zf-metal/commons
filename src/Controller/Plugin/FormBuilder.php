@@ -11,23 +11,28 @@ class FormBuilder extends AbstractPlugin {
      *
      * @var \ZfMetal\Commons\Service\FormBuilder
      */
-    protected $formBuilder;
+    protected $serviceFormBuilder;
 
-    function getFormBuilder() {
-        return $this->formBuilder;
+    function getServiceFormBuilder() {
+        if(!$this->serviceFormBuilder){
+            throw new Exception("Service Form Builder need be Injected");
+        }
+        return $this->serviceFormBuilder;
     }
 
+        
     function setFormBuilder(\ZfMetal\Commons\Service\FormBuilder $formBuilder) {
         $this->formBuilder = $formBuilder;
         return $this;
     }
 
-    function __construct(\ZfMetal\Commons\Service\FormBuilder $formBuilder) {
-        $this->formBuilder = $formBuilder;
+    function __construct(\ZfMetal\Commons\Service\FormBuilder $serviceFormBuilder) {
+        $this->serviceFormBuilder = $serviceFormBuilder;
     }
 
     public function __invoke(\Doctrine\ORM\EntityManager $em, $entityName, $addSubmit = true, $addId = false) {
-        return $this->formBuilder($em, $entityName, $addSubmit, $addId);
+        $serviceFormBuilder =  $this->getServiceFormBuilder();
+        return $serviceFormBuilder($em, $entityName, $addSubmit, $addId);
     }
 
 }
