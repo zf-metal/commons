@@ -90,7 +90,7 @@ class FormProcess {
         return $this->status;
     }
 
-    function __construct(\Zend\Http\Request $request, \Zend\Mvc\Plugin\FlashMessenger $flashMessenger, \ZfMetal\Commons\Options\ModuleOptions $moduleOptions) {
+    function __construct(\Zend\Http\Request $request, \Zend\Mvc\Plugin\FlashMessenger\FlashMessenger $flashMessenger, \ZfMetal\Commons\Options\ModuleOptions $moduleOptions) {
         $this->request = $request;
         $this->flashMessenger = $flashMessenger;
         $this->setMsjOk($moduleOptions->getFormProcessMsjOk());
@@ -114,7 +114,7 @@ class FormProcess {
                 $this->getEm()->flush();
                 $this->status = true;
                 if ($this->flash) {
-                    $this->getController()->flashMessenger()->addSuccessMessage($this->getMsjOk());
+                    $this->getFlashMessenger()->addSuccessMessage($this->getMsjOk());
                 }
             } else {
                 $this->status = false;
@@ -148,14 +148,14 @@ class FormProcess {
 
     protected function erroToFlash() {
         if ($this->flash) {
-            $this->getController()->flashMessenger()->addErrorMessage($this->getMsjFail());
+            $this->getFlashMessenger()->addErrorMessage($this->getMsjFail());
         }
         foreach ($this->form->getMessages() as $key => $messages) {
             foreach ($messages as $msj) {
                 $msj = "" . $key . ": " . $msj;
                 $this->errors[] = $msj;
                 if ($this->flash) {
-                    $this->getController()->flashMessenger()->addErrorMessage($msj);
+                    $this->getFlashMessenger()->addErrorMessage($msj);
                 }
             }
         }
@@ -178,5 +178,10 @@ class FormProcess {
         $this->msjFail = $msjFail;
         return $this;
     }
+    function getFlashMessenger() {
+        return $this->flashMessenger;
+    }
+
+
 
 }

@@ -13,12 +13,12 @@ class FormProcessFactory implements FactoryInterface {
         $request = $container->get('application')->getMvcEvent()->getRequest();
 
         /* @var $flashMessenger \Zend\Mvc\Plugin\FlashMessenger\FlashMessenger */
-        $flashMessenger = $container->get('flashmessenger');
+        $flashMessenger = $container->get('ControllerPluginManager')->get('flashmessenger');
 
         /* @var $moduleOptions \ZfMetal\Commons\Options\ModuleOptions */
         $moduleOptions = $container->get('zf-metal-commons.options');
 
-        return new \ZfMetal\Commons\Service\FormProcess($request, $flashMessenger,$moduleOptions);
+        return new \ZfMetal\Commons\Service\FormProcess($request, $flashMessenger, $moduleOptions);
     }
 
 }

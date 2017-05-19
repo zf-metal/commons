@@ -10,29 +10,26 @@ class FormProcess extends AbstractPlugin {
      *
      * @var \ZfMetal\Commons\Service\FormProcess
      */
-    protected $formProcess;
+    protected $serviceFormProcess;
 
-    function getFormProcess() {
-        return $this->formProcess;
+    function getServiceFormProcess() {
+        return $this->serviceFormProcess;
     }
 
-    function setFormProcess(\ZfMetal\Commons\Service\FormProcess $formProcess) {
-        $this->formProcess = $formProcess;
-        return $this;
-    }
-
-    function __construct(\ZfMetal\Commons\Service\FormProcess $formProcess) {
-        $this->formProcess = $formProcess;
+    
+    function __construct(\ZfMetal\Commons\Service\FormProcess $serviceFormProcess) {
+        $this->serviceFormProcess = $serviceFormProcess;
     }
 
     public function __invoke(\Doctrine\ORM\EntityManager $em, \Zend\Form\Form $form, $flash = true, $msjOk = null, $msjFail = null) {
         if ($msjOk) {
-            $this->formProcess->setMsjOk($msjOk);
+            $this->getServiceFormProcess()->setMsjOk($msjOk);
         }
         if ($msjFail) {
-            $this->formProcess->setMsjFail($msjFail);
+            $this->getServiceFormProcess()->setMsjFail($msjFail);
         }
-        return $this->formProcess($em, $form, $flash);
+        $serviceFormProcess = $this->getServiceFormProcess();
+        return $serviceFormProcess($em, $form, $flash);
     }
 
 }
