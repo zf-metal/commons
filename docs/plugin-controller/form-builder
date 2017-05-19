@@ -1,0 +1,27 @@
+[HOME](index.md) > [PluginsControllers](../plugin-controller.md) > FormBuilder 
+
+# FormBuilder 
+
+This Plugin allows us to generate a form from a Doctrine entity.
+
+### Parameters on Invoke:
+* @param \Doctrine\ORM\EntityManager $em  Doctrine EntityManager
+* @param string $entityName Name of Entity
+* @param boolean $addSubmit (Optional) Defines if a submit button is added to the form
+* @param boolean  $addId (Optional) add a \Zend\Form\Element\Hidden('id')
+
+### Return:
+* @return \Zend\Form\Form
+
+### Invoke:
+* formBuilder
+
+### Example:
+```
+$em = $this->getEm();
+$entityName = "Module\Entity\SomeEntity";
+$addSubmit = true;
+$addId = true;
+
+$form = $this->formBuilder($em,$entityName,$addSubmit,$addId);
+```

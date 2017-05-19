@@ -124,13 +124,26 @@ class FormProcess {
         return $this;
     }
 
+    /**
+     * Keep compatible
+     * 
+     * @return array
+     */
     public function getResult() {
-        $json["status"] = $this->status;
-        $json["errors"] = $this->errors;
+        return $this->getArrayResult();
+    }
+
+    public function getArrayResult() {
+        $a["status"] = $this->status;
+        $a["errors"] = $this->errors;
         if (method_exists($this->form->getObject(), 'getId')) {
-            $json["id"] = $this->form->getObject()->getId();
+            $a["id"] = $this->form->getObject()->getId();
         }
-        return $json;
+        return $a;
+    }
+
+    public function getJsonResult() {
+        return json_encode($this->getArrayResult());
     }
 
     protected function erroToFlash() {
