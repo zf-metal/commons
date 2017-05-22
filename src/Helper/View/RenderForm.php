@@ -22,12 +22,20 @@ class RenderForm extends AbstractHelper {
     private $style;
     private $columns;
     private $form;
+    private $groupsConfig = null;
 
     function __construct(\ZfMetal\Commons\Options\ModuleOptions $moduleOptions) {
         $this->moduleOptions = $moduleOptions;
     }
-
-    public function __invoke($form, $style = null, $columns = null, array $horizontalGroups = null, array $verticalGroups = null) {
+    /**
+     * 
+     * @param type $form
+     * @param type $style
+     * @param type $columns
+     * @param array $groups (Ex: [['type' => 'vertical','columns' => 'one','style' => 'vertical','title' => 'asd','fields' => ['nombre','apellido']],[otherGroup...]])
+     * @return type
+     */
+    public function __invoke($form, $style = null, $columns = null, array $groups = null) {
         $this->form = $form;
 
         if ($style) {
@@ -40,13 +48,18 @@ class RenderForm extends AbstractHelper {
 
         $this->classStyle();
 
+        if ($groups) {
+            foreach ($groups as $group) {
+                $this->groupsConfig[] = new \ZfMetal\Commons\Options\FormGroupConfig($group);
+            }
+        }
+
         return $this->view->partial(
                         self::partial, array(
                     "form" => $this->form,
                     "style" => $this->getStyle(),
                     'columnClass' => self::column_class[$this->getColumns()],
-                    'horizontalGroups' => $horizontalGroups,
-                    'verticalGroups' => $verticalGroups
+                    'groupsConfig' => $this->getGroupsConfig(),
         ));
     }
 
@@ -98,6 +111,10 @@ class RenderForm extends AbstractHelper {
 
     function setModuleOptions(\ZfMetal\Commons\Options\ModuleOptions $moduleOptions) {
         $this->moduleOptions = $moduleOptions;
+    }
+
+    function getGroupsConfig() {
+        return $this->groupsConfig;
     }
 
 }
