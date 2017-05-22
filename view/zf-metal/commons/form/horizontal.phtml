@@ -1,0 +1,18 @@
+<?php /* @var $groupConfig \ZfMetal\Commons\Options\FormGroupConfig */ ?>
+<div id="form-group-<?php echo $groupConfig->getId(); ?>">
+    
+    <?php if ($groupConfig->getTitle()): ?>
+        <legend><?php echo $this->translate($groupConfig->getTitle()); ?></legend>
+    <?php endif; ?>
+
+    <?php foreach ($groupConfig->getFields() as $item): ?>
+        <?php if ($form->has($item) && !in_array($item, $elementsReady)): ?>
+            <?php $element = $form->get($item); ?>
+            <?php $elementsReady[] = $item; ?>
+        <div class="<?php echo ($element->getAttribute('type') !== "hidden") ? $groupConfig->getColumnClass() : "input-hidden"; ?>">
+                <?php echo $this->renderFormElement($element, $groupConfig->getStyle()); ?>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</div>
+<div class="clearfix"></div>

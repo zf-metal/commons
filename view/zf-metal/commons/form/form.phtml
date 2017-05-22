@@ -6,46 +6,55 @@ $elementsReady = array();
 
 <?php echo $this->form()->openTag($form); ?>
 
-<!--HORIZONTAL GROUPS-->
-<?php if (count($this->horizontalGroups)): ?>
-    <?php foreach ($this->horizontalGroups as $groupName => $group): ?>
-        <div id="form-group-<?php echo $groupName; ?>">
-            <legend><?php echo $this->translate($groupName); ?></legend>
-            <?php foreach ($group as $item): ?>
-                <?php if ($form->has($item) && !in_array($item, $elementsReady)): ?>
-                    <?php $element = $form->get($item); ?>
-                    <?php $elementsReady[] = $item; ?>
-                    <div class="<?php echo ($element->getAttribute('type') !== "hidden") ? $this->columnClass : "input-hidden"; ?>">
-                        <?php echo $this->renderFormElement($element, $this->style); ?>
-                    </div>
+<!--GROUPS-->
+<?php if (count($this->groupsConfig)): ?>
+    <?php foreach ($this->groupsConfig as $groupConfig): ?>
+        <?php if ($groupConfig->getType() == \ZfMetal\Commons\Options\FormGroupConfig::TYPE_HORIZONTAL): ?>
+            <!--HORIZONTAL-->
+            <div class="clearfix"></div>
+            <div id="form-group-<?php echo $groupConfig->getId(); ?>">
+
+                <?php if ($groupConfig->getTitle()): ?>
+                    <legend><?php echo $this->translate($groupConfig->getTitle()); ?></legend>
                 <?php endif; ?>
-            <?php endforeach; ?>
-        </div>
-        <div class="clearfix"></div>
-    <?php endforeach; ?>
 
-<?php endif; ?>
-
-<!--VERTICAL-GROUPS-->
-<?php if (count($this->verticalGroups)): ?>
-    <?php foreach ($this->verticalGroups as $groupName => $group): ?>
-        <div class="<?php echo $this->columnClass; ?>">
-
-            <div id="form-group-<?php echo $groupName; ?>">
-                <legend><?php echo $this->translate($groupName); ?></legend>
-                <?php foreach ($group as $item): ?>
+                <?php foreach ($groupConfig->getFields() as $item): ?>
                     <?php if ($form->has($item) && !in_array($item, $elementsReady)): ?>
                         <?php $element = $form->get($item); ?>
                         <?php $elementsReady[] = $item; ?>
-                        <?php echo $this->renderFormElement($element, $this->style); ?>
+                        <div class="<?php echo ($element->getAttribute('type') !== "hidden") ? $groupConfig->getColumnClass() : "input-hidden"; ?>">
+                            <?php echo $this->renderFormElement($element, $groupConfig->getStyle()); ?>
+                        </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>
-        </div>
+            <div class="clearfix"></div>
+
+        <?php endif; ?>
+
+        <?php if ($groupConfig->getType() == \ZfMetal\Commons\Options\FormGroupConfig::TYPE_VERTICAL): ?>
+            <!--VERTICAL-->
+            <div class="<?php echo $groupConfig->getColumnClass(); ?>">
+
+                <div id="form-group-<?php echo $groupConfig->getId(); ?>">
+
+                    <?php if ($groupConfig->getTitle()): ?>
+                        <legend><?php echo $this->translate($groupConfig->getTitle()); ?></legend>
+                    <?php endif; ?>
+
+                    <?php foreach ($groupConfig->getFields() as $item): ?>
+                        <?php if ($form->has($item) && !in_array($item, $elementsReady)): ?>
+                            <?php $element = $form->get($item); ?>
+                            <?php $elementsReady[] = $item; ?>
+                            <?php echo $this->renderFormElement($element, $groupConfig->getStyle()); ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
     <?php endforeach; ?>
-
-<?php endif; ?>        
-
+<?php endif; ?>
 
 <!--OTHERS-->
 <?php foreach ($form as $element) : ?>
