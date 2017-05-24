@@ -34,7 +34,7 @@ $elementsReady = array();
 
         <?php if ($groupConfig->getType() == \ZfMetal\Commons\Options\FormGroupConfig::TYPE_VERTICAL): ?>
             <!--VERTICAL-->
-            <div class="<?php echo $this->columnClass; ?>">
+            <div class="<?php echo $groupConfig->getColumnClass(); ?>">
 
                 <div id="form-group-<?php echo $groupConfig->getId(); ?>">
 
