@@ -52,6 +52,8 @@ class RenderForm extends AbstractHelper {
             foreach ($groups as $group) {
                 $this->groupsConfig[] = new \ZfMetal\Commons\Options\FormGroupConfig($group);
             }
+        }else{
+             $this->groupsConfig = [];
         }
 
         return $this->view->partial(
