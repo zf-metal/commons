@@ -7,17 +7,45 @@ use \DoctrineORMModule\Form\Annotation\AnnotationBuilder as DoctrineAnnotationBu
 
 class ExportToExcel extends AbstractPlugin {
 
+    /**
+     *
+     * @var array
+     */
+    private $config;
 
-
-    function __construct() {
-
+    function __construct($config = array()) {
+        $this->config = $config;
     }
 
-    public function __invoke(\Doctrine\ORM\EntityManager $em, $entity,\Doctrine\ORM\QueryBuilder $queryBuilder = null, $configKey) {
+    function getConfig() {
+        return $this->config;
+    }
+
+    public function __invoke(\Doctrine\ORM\EntityManager $em, $entity, \Doctrine\ORM\QueryBuilder $queryBuilder = null, $configKey) {
+        if (!$queryBuilder) {
+            /** @var $queryBuilder \Doctrine\ORM\QueryBuilder  */
+            $queryBuilder = $this->getQueryBuilder($em, $entity);
+        }
+
+        $records = $queryBuilder
+                ->getQuery()
+                ->getResult();
+        
+        $writter = new \XLSXWriter();
+        
+        $properties = $em->getClassMetadata($entity);
         
     }
-    
-    public function export(){
+
+    private function getQueryBuilder(\Doctrine\ORM\EntityManager $em, $entity) {
+        return $em->createQueryBuilder()->select('u')->from($entity, 'u');
+    }
+
+    private function getProperties($entity){
+       
+    }
+
+    public function export() {
         
     }
 

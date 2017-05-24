@@ -1,6 +1,7 @@
 <?php
 
 namespace ZfMetal\Commons;
+
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
@@ -8,6 +9,7 @@ return [
         'factories' => [
             \ZfMetal\Commons\Controller\Plugin\FormBuilder::class => \ZfMetal\Commons\Factory\Controller\Plugin\FormBuilderFactory::class,
             \ZfMetal\Commons\Controller\Plugin\FormProcess::class => \ZfMetal\Commons\Factory\Controller\Plugin\FormProcessFactory::class,
+            \ZfMetal\Commons\Controller\Plugin\ExportToExcel::class => \ZfMetal\Commons\Factory\Controller\Plugin\ExportToExcelFactory::class,
         ],
         'aliases' => [
             'formBuilder' => \ZfMetal\Commons\Controller\Plugin\FormBuilder::class,
