@@ -9,7 +9,7 @@ if (!preg_match("/form-control/", $class)) {
     <label class="control-label"><?php echo ucfirst($this->translate($this->element->getLabel())); ?></label>
 
     <label class="btn btn-default glyphicon glyphicon-open">
-        <?php echo $this->formElement($this->element); ?>
+        <?php echo $this->formFile($this->element); ?>
     </label>
 
     <?php if ($element->getOption('description')): ?>
