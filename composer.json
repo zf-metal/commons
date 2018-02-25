@@ -2,8 +2,8 @@
     "name": "zf-metal/commons",
     "description": "Modulo con funcionalides comunes para Zend Framework 3",
     "type": "library",
-    "license": "BSD-3-Clause",
-    "version": "0.0.2",
+    "license": "MIT",
+    "version": "1.0.0",
     "homepage": "https://github.com/cincarnato",
     "keywords": [
         "zf3"
