@@ -27,6 +27,21 @@ class ModuleOptions extends AbstractOptions {
     protected $domain;
 
 
+
+    /**
+     *
+     * @var string
+     */
+    protected $copyright;
+
+    /**
+     *
+     * @var string
+     */
+    protected $author;
+
+
+
     /**
      *
      * @var string
@@ -107,6 +122,38 @@ class ModuleOptions extends AbstractOptions {
     public function setDomain($domain)
     {
         $this->domain = $domain;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCopyright()
+    {
+        return $this->copyright;
+    }
+
+    /**
+     * @param string $copyright
+     */
+    public function setCopyright($copyright)
+    {
+        $this->copyright = $copyright;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param string $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
     }
 
 

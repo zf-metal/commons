@@ -25,17 +25,34 @@ class Layout
      */
     protected $domain;
 
+
+    /**
+     *
+     * @var string
+     */
+    protected $copyright;
+
+    /**
+     *
+     * @var string
+     */
+    protected $author;
+
     /**
      * Layout constructor.
      * @param string $title
      * @param string $tabTitle
      * @param string $domain
+     * @param string $copyright
+     * @param string $author
      */
-    public function __construct($title, $tabTitle, $domain)
+    public function __construct($title, $tabTitle, $domain, $copyright, $author)
     {
         $this->title = $title;
         $this->tabTitle = $tabTitle;
         $this->domain = $domain;
+        $this->copyright = $copyright;
+        $this->author = $author;
     }
 
 
@@ -86,6 +103,40 @@ class Layout
     {
         $this->domain = $domain;
     }
+
+    /**
+     * @return string
+     */
+    public function getCopyright()
+    {
+        return $this->copyright;
+    }
+
+    /**
+     * @param string $copyright
+     */
+    public function setCopyright($copyright)
+    {
+        $this->copyright = $copyright;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param string $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+
 
 
 
