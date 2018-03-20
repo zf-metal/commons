@@ -1,35 +1,40 @@
 {
-    "name": "zf-metal/commons",
-    "description": "Modulo con funcionalides comunes para Zend Framework 3",
-    "type": "library",
-    "license": "MIT",
-    "version": "1.0.1",
-    "homepage": "https://github.com/cincarnato",
-    "keywords": [
-        "zf3"
-    ],
-    "authors": [
-        {
-            "name": "Cristian Incarnato",
-            "email": "cincarnato@gmail.com",
-            "homepage": "http://cincarnato.com.ar/",
-            "role": "Desarrollador"
-        },
-         {
-            "name": "Alejandro Furgeri",
-            "email": "alecitoman@gmail.com",
-            "homepage": "http://afurgeri.com.ar/",
-            "role": "Desarrollador"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-        "php": ">=5.6"
+  "name": "zf-metal/commons",
+  "description": "Modulo con funcionalides comunes para Zend Framework 3",
+  "type": "library",
+  "license": "MIT",
+  "version": "1.1.0",
+  "homepage": "https://github.com/cincarnato",
+  "keywords": [
+    "zf3"
+  ],
+  "authors": [
+    {
+      "name": "Cristian Incarnato",
+      "email": "cincarnato@gmail.com",
+      "homepage": "http://cincarnato.com.ar/",
+      "role": "Desarrollador"
     },
-    "autoload": {
-        "psr-4": {
-            "ZfMetal\\Commons\\": "src/"
-        }
-
+    {
+      "name": "Alejandro Furgeri",
+      "email": "alecitoman@gmail.com",
+      "homepage": "http://afurgeri.com.ar/",
+      "role": "Desarrollador"
     }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=5.6",
+    "zendframework/zend-stdlib": "^2.7 || ^3.0",
+    "zendframework/zend-servicemanager": "^3.3.2",
+    "zendframework/zend-eventmanager": "^3.2.0",
+    "zendframework/zend-mvc": "^3.1.1"
+
+  },
+  "autoload": {
+    "psr-4": {
+      "ZfMetal\\Commons\\": "src/"
+    }
+  }
 }

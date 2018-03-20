@@ -10,6 +10,7 @@ return [
             'zf-metal-zend-form-factory' => \ZfMetal\Commons\Factory\ZendFormFactory::class,
             'zf-metal-form-builder' => \ZfMetal\Commons\Factory\Service\FormBuilderFactory::class,
             'zf-metal-form-process' => \ZfMetal\Commons\Factory\Service\FormProcessFactory::class,
+            'zf-metal-layout' => \ZfMetal\Commons\Factory\Service\LayoutFactory::class,
         ],
         'aliases' => [
         ]
