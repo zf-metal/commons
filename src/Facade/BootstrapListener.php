@@ -24,7 +24,7 @@ class BootstrapListener implements ListenerAggregateInterface
      */
     public function attach(EventManagerInterface $events, $priority = 1)
     {
-        $this->listener = $events->attach(MvcEvent::EVENT_BOOTSTRAP, function (MvcEvent $e) {
+        $this->listener = $events->attach(MvcEvent::EVENT_ROUTE, function (MvcEvent $e) {
             $serviceManager = $e->getApplication()->getServiceManager();
             Accessor::setServiceLocator($serviceManager);
         }, 2);

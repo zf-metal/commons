@@ -3,6 +3,8 @@
 namespace ZfMetal\Commons\Facade;
 
 
+use Zend\ServiceManager\ServiceLocatorInterface;
+
 abstract class Accessor
 {
     /**
