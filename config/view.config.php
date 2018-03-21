@@ -12,6 +12,7 @@ return [
     ],
     'view_helpers' => [
         'factories' => [
+            \ZfMetal\Commons\Helper\View\LayoutHelper::class => \ZfMetal\Commons\Factory\Helper\View\LayoutHelperFactory::class,
             \ZfMetal\Commons\Helper\View\RenderForm::class => \ZfMetal\Commons\Factory\Helper\View\RenderFormFactory::class,
             \ZfMetal\Commons\Helper\View\RenderFormElement::class => \ZfMetal\Commons\Factory\Helper\View\RenderFormElementFactory::class,
             \ZfMetal\Commons\Helper\View\Flash::class => InvokableFactory::class,
@@ -21,6 +22,7 @@ return [
             \ZfMetal\Commons\Helper\View\BootstrapModal::class => InvokableFactory::class,
         ],
         'aliases' => [
+            'layoutHelper' => \ZfMetal\Commons\Helper\View\LayoutHelper::class,
             'renderForm' => \ZfMetal\Commons\Helper\View\RenderForm::class,
             'renderFormElement' => \ZfMetal\Commons\Helper\View\RenderFormElement::class,
             'flash' => \ZfMetal\Commons\Helper\View\Flash::class,

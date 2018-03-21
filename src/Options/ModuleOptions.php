@@ -20,6 +20,14 @@ class ModuleOptions extends AbstractOptions {
      */
     protected $tabTitle;
 
+
+    /**
+     *
+     * @var string
+     */
+    protected $pageTitle;
+
+
     /**
      *
      * @var string
@@ -107,6 +115,24 @@ class ModuleOptions extends AbstractOptions {
     {
         $this->tabTitle = $tabTitle;
     }
+
+    /**
+     * @return string
+     */
+    public function getPageTitle()
+    {
+        return $this->pageTitle;
+    }
+
+    /**
+     * @param string $pageTitle
+     */
+    public function setPageTitle($pageTitle)
+    {
+        $this->pageTitle = $pageTitle;
+    }
+
+
 
     /**
      * @return string

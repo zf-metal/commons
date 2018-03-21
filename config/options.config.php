@@ -5,7 +5,8 @@ namespace ZfMetal\Commons;
 return[
     'zf-metal-commons.options' => [
         'title' => 'Title in zf-metal-commons.options',
-        'tab_title' =>  'Title in zf-metal-commons.options',
+        'tab_title' =>  'Tab-Title in zf-metal-commons.options',
+        'page_title' =>  'Page-Title in zf-metal-commons.options',
         'domain' => 'Domain in zf-metal-commons.options',
         'copyright' => 'copyright',
         'author' => 'ZfMetal',

@@ -19,6 +19,13 @@ class Layout
      */
     protected $tabTitle;
 
+
+    /**
+     *
+     * @var string
+     */
+    protected $pageTitle;
+
     /**
      *
      * @var string
@@ -46,10 +53,11 @@ class Layout
      * @param string $copyright
      * @param string $author
      */
-    public function __construct($title, $tabTitle, $domain, $copyright, $author)
+    public function __construct($title, $tabTitle,$pageTitle, $domain, $copyright, $author)
     {
         $this->title = $title;
         $this->tabTitle = $tabTitle;
+        $this->pageTitle = $pageTitle;
         $this->domain = $domain;
         $this->copyright = $copyright;
         $this->author = $author;
@@ -87,6 +95,24 @@ class Layout
     {
         $this->tabTitle = $tabTitle;
     }
+
+    /**
+     * @return string
+     */
+    public function getPageTitle()
+    {
+        return $this->pageTitle;
+    }
+
+    /**
+     * @param string $pageTitle
+     */
+    public function setPageTitle($pageTitle)
+    {
+        $this->pageTitle = $pageTitle;
+    }
+
+
 
     /**
      * @return string

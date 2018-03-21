@@ -13,7 +13,7 @@ class LayoutFactory implements FactoryInterface {
 
         /** @var ModuleOptions $mo */
         $mo = $container->get('zf-metal-commons.options');
-        $layout = new Layout($mo->getTitle(),$mo->getTabTitle(),$mo->getDomain(),$mo->getCopyright(),$mo->getAuthor());
+        $layout = new Layout($mo->getTitle(),$mo->getTabTitle(),$mo->getPageTitle(),$mo->getDomain(),$mo->getCopyright(),$mo->getAuthor());
         return $layout;
     }
 
