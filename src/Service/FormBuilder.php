@@ -88,7 +88,7 @@ class FormBuilder {
 
         if ($addSubmit) {
             $form->add([
-                'name' => 'submitbtn',
+                'name' => 'submit',
                 'type' => 'Zend\Form\Element\Submit',
                 'attributes' => [
                     'value' => "Submit",
