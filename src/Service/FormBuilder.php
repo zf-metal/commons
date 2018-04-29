@@ -106,6 +106,14 @@ class FormBuilder {
         }
 
         $form->setHydrator(new \DoctrineModule\Stdlib\Hydrator\DoctrineObject($this->getEm()));
+
+        //Set Doctrine Hydrator to child fieldset or collection
+        foreach($form as $element){
+            if($element instanceof Fieldset || $element instanceof Collection){
+                $element->setHydrator(new \DoctrineModule\Stdlib\Hydrator\DoctrineObject($this->getEm()));
+            }
+        }
+
         return $form;
     }
 
