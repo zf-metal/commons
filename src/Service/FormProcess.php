@@ -140,7 +140,9 @@ class FormProcess {
 
     public function getArrayResult() {
         $a["status"] = $this->status;
-        $a["errors"] = $this->errors;
+        if($this->errors) {
+            $a["errors"] = $this->errors;
+        }
         if (method_exists($this->form->getObject(), 'getId')) {
             $a["id"] = $this->form->getObject()->getId();
         }
