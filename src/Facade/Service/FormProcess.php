@@ -3,12 +3,12 @@ namespace ZfMetal\Commons\Facade\Service;
 
 use ZfMetal\Commons\Facade\Accessor;
 
-class FormBuilder extends Accessor
+class FormProcess extends Accessor
 {
 
     public static function getServiceName()
     {
-        return 'zf-metal-form-builder';
+        return 'zf-metal-form-process';
     }
 
 }
