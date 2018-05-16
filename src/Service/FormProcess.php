@@ -97,8 +97,8 @@ class FormProcess {
         $this->setMsjFail($moduleOptions->getFormProcessMsjFail());
     }
 
-    function __invoke(\Doctrine\ORM\EntityManager $em, \Zend\Form\Form $form, $flash = true) {
-        return $this->process($em, $form, $flash);
+    function __invoke(\Doctrine\ORM\EntityManager $em, \Zend\Form\Form $form, $flash = true,$data = null) {
+        return $this->process($em, $form, $flash,$data);
     }
 
     public function process(\Doctrine\ORM\EntityManager $em, \Zend\Form\Form $form, $flash = true, $data = null) {
