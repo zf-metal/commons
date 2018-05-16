@@ -101,13 +101,18 @@ class FormProcess {
         return $this->process($em, $form, $flash);
     }
 
-    public function process(\Doctrine\ORM\EntityManager $em, \Zend\Form\Form $form, $flash = true) {
+    public function process(\Doctrine\ORM\EntityManager $em, \Zend\Form\Form $form, $flash = true, $data = null) {
         $this->em = $em;
         $this->form = $form;
         $this->flash = $flash;
 
-        if ($this->getRequest()->isPost()) {
-            $this->form->setData($this->getRequest()->getPost());
+        if ($this->getRequest()->isPost() || $data) {
+
+            if(!$data){
+                $data = $this->getRequest()->getPost();
+            }
+
+            $this->form->setData($data);
 
             if ($this->form->isValid()) {
                 $this->getEm()->persist($this->form->getObject());

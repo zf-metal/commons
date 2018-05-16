@@ -21,7 +21,7 @@ class FormProcess extends AbstractPlugin {
         $this->serviceFormProcess = $serviceFormProcess;
     }
 
-    public function __invoke(\Doctrine\ORM\EntityManager $em, \Zend\Form\Form $form, $flash = true, $msjOk = null, $msjFail = null) {
+    public function __invoke(\Doctrine\ORM\EntityManager $em, \Zend\Form\Form $form, $flash = true, $msjOk = null, $msjFail = null, $data = null) {
         if ($msjOk) {
             $this->getServiceFormProcess()->setMsjOk($msjOk);
         }
@@ -29,7 +29,7 @@ class FormProcess extends AbstractPlugin {
             $this->getServiceFormProcess()->setMsjFail($msjFail);
         }
         $serviceFormProcess = $this->getServiceFormProcess();
-        return $serviceFormProcess($em, $form, $flash);
+        return $serviceFormProcess($em, $form, $flash, $data);
     }
 
 }
