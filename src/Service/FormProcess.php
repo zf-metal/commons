@@ -159,8 +159,7 @@ class FormProcess {
         }
         foreach ($this->form->getMessages() as $key => $messages) {
             foreach ($messages as $msj) {
-                $m[$key][] = $msj;
-                $this->errors[] = $m;
+                $this->errors[$key][] = $msj;
                 if ($this->flash) {
                     $this->getFlashMessenger()->addErrorMessage($msj);
                 }
