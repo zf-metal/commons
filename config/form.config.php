@@ -11,4 +11,10 @@ return [
             }
         ]
     ],
+    'validators' => [
+        'factories' => [
+            'UniqueObject' => \ZfMetal\Commons\Factory\Validator\UniqueObjectFactory::class,
+        ],
+
+    ],
 ];
