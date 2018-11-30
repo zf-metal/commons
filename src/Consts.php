@@ -14,12 +14,15 @@ class Consts {
     const COLUMNS_TWO = "two";
     const COLUMNS_THREE = "three";
     const COLUMNS_FOUR = "four";
+
     const STYLE_VERTICAL = "vertical";
     const STYLE_VERTICAL_LG = "vertical-lg";
     const STYLE_HORIZONTAL = "horizontal";
     const STYLE_HORIZONTAL_LG = "horizontal-lg";
     const STYLE_INLINE = "inline";
     const STYLE_PLACEHOLDER = "placeholder";
+
+
     const COLUMNS = [
         self::COLUMNS_ONE => self::COLUMNS_ONE,
         self::COLUMNS_TWO => self::COLUMNS_TWO,

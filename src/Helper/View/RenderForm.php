@@ -30,12 +30,12 @@ class RenderForm extends AbstractHelper {
     /**
      * 
      * @param type $form
-     * @param type $style
+     * @param string $style the style of the form and fields: form-vertical, form-horizontal, form-inline, placeholder
      * @param type $columns
      * @param array $groups (Ex: [['type' => 'vertical','columns' => 'one','style' => 'vertical','title' => 'asd','fields' => ['nombre','apellido']],[otherGroup...]])
      * @return type
      */
-    public function __invoke($form, $style = null, $columns = null, array $groups = null) {
+    public function __invoke($form, $style = \ZfMetal\Commons\Consts::STYLE_VERTICAL, $columns = \ZfMetal\Commons\Consts::COLUMNS_ONE, array $groups = null) {
         $this->form = $form;
 
         if ($style) {
