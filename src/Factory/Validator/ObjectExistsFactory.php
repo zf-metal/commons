@@ -5,7 +5,7 @@
 
 namespace ZfMetal\Commons\Factory\Validator;
 
-use DoctrineModule\Validator\NoObjectExists;
+use DoctrineModule\Validator\ObjectExists;
 
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -42,7 +42,7 @@ class ObjectExistsFactory implements FactoryInterface
             $options['object_repository'] = $entityManager->getRepository($options['object_repository']);
         }
 
-        return new NoObjectExists($options);
+        return new ObjectExists($options);
     }
 
 }
